@@ -8,12 +8,14 @@ class DatabaseIn{ //DatabaseIn tulajdonságai
   protected $dbUser;
   protected $dbPass;
   protected $dbName;
+
   function __construct($dbservname,$dbUser,$dbPass,$dbName){  //construktor declarácciója ez mindig autómatikusan megfog hívódni
     $this->dbservername = $dbservname; 
     $this->dbUser = $dbUser;
     $this->dbPass = $dbPass;
     $this->dbName = $dbName;
   }
+
   function databaseCall(){
     $GLOBALS['db'] = mysqli_connect($this->dbservername,$this->dbUser,$this->dbPass,$this->dbName)
     or die("Error " . mysqli_error($GLOBALS['db']));
@@ -21,15 +23,19 @@ class DatabaseIn{ //DatabaseIn tulajdonságai
     $result = $GLOBALS['db']->query($query);
     return $result;
   }
-  public function run(){
-    
-    $result = $this->databaseCall();
 
+  function databaseDataToArray($result){
+    $rows = array();
     while($row=mysqli_fetch_array($result)){
-        $rows[] = $row;
-
+      $rows[] = $row;
     }
     return $rows;
+  }
+  public function run(){
+    $result = $this->databaseCall();
+    $result = $this->databaseDataToArray($result);
+    return $result;
     }
+    
 }
 ?>
