@@ -1,108 +1,39 @@
 <?php
+include '.php';
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 $GLOBALS['db'] = mysqli_connect("db","test_feladat","mPPUsybBQnRVRdJQ","test_feladat")
         or die("Error " . mysqli_error($GLOBALS['db']));
-
-$query = "SELECT * FROM tree_source WHERE parent_id = 0";
+$query = "SELECT id,name,parent_id FROM tree_source";
 $result = $GLOBALS['db']->query($query);
 
-echo '<ul>';
-
-while ($row = mysqli_fetch_assoc($result))
-{
-    echo '<li>';
-    echo $row['name'];
-    switch ($row['id']) {
-        case 1:
-            $GLOBALS['db'] = mysqli_connect("db","test_feladat","mPPUsybBQnRVRdJQ","test_feladat")
-                    or die("Error " . mysqli_error($GLOBALS['db']));
-            $query_1 = "SELECT * FROM tree_source WHERE parent_id = 1";
-            $result_1 = $GLOBALS['db']->query($query_1);
-
-            echo '<ul>';
-
-            while ($row_1 = mysqli_fetch_assoc($result_1))
-            {
-                echo '<li>';
-                echo $row_1['name'];
-                switch ($row_1['id']) {
-                    case 2:
-                        $GLOBALS['db'] = mysqli_connect("db","test_feladat","mPPUsybBQnRVRdJQ","test_feladat")
-                                or die("Error " . mysqli_error($GLOBALS['db']));
-
-                        $query_2 = "SELECT * FROM tree_source WHERE parent_id = 2";
-                        $result_2 = $GLOBALS['db']->query($query_2);
-
-                        print '<ul>';
-
-                        while ($row_2 = mysqli_fetch_assoc($result_2))
-                        {
-                            print '<li>';
-                            print $row_2['name'];
-                            print '</li>';
-                        }
-
-                        echo '</ul>';
-                        break;
-                    case 3:
-                        $GLOBALS['db'] = mysqli_connect("db","test_feladat","mPPUsybBQnRVRdJQ","test_feladat")
-                                or die("Error " . mysqli_error($GLOBALS['db']));
-
-                        $query_3 = "SELECT * FROM tree_source WHERE parent_id = 3";
-                        $result_3 = $GLOBALS['db']->query($query_3);
-
-                        echo '<ul>';
-
-                        while ($row_3 = mysqli_fetch_assoc($result_3))
-                        {
-                            ?>
-                                <li><?=$row_3['name'];?></li>
-                            <?
-                        }
-
-                        echo '</ul>';
-                        break;
-
-                }
-                echo '</li>';
-            }
-
-            echo '</ul>';
-            break;
-        case 4:
-            $GLOBALS['db'] = mysqli_connect("db","test_feladat","mPPUsybBQnRVRdJQ","test_feladat")
-                    or die("Error " . mysqli_error($GLOBALS['db']));
-
-            $query_4 = "SELECT * FROM tree_source WHERE parent_id = 4";
-            $result_4 = $GLOBALS['db']->query($query_4);
-
-            echo '<ul>';
-
-            while ($row_4 = mysqli_fetch_assoc($result_4))
-            {
-                 $row  = '<li>' . $row_4['name'] . '</li>';
-                 print_r($row);
-            }
-
-            echo '</ul>';
-            break;
-        case 7:
-            $GLOBALS['db'] = mysqli_connect("db","test_feladat","mPPUsybBQnRVRdJQ","test_feladat")
-                    or die("Error " . mysqli_error($GLOBALS['db']));
-
-            $query_7 = "SELECT * FROM tree_source WHERE parent_id = 7";
-            $result_7 = $GLOBALS['db']->query($query_7);
-
-            echo '<ul>';
-
-            while ($row_7 = mysqli_fetch_assoc($result_7))
-            {
-                echo sprintf('<li>%w</li>',$row_7['name']);
-            }
-
-            echo '</ul>';
-            break;
-        }
-   echo '</li>';
+function has_children($rows,$id){
+    foreach($rows as $row){
+        if($row[2] == $id) //$row[2]  a parent_id
+            return true;
+    }
+    return false;
 }
-
-echo '</ul>';
+function build_menu($rows,$parent=0){  
+    $result = "<ul>";
+    foreach($rows as $row)
+    {
+      if($row[2] == $parent){ //$row[2]  a parent_id
+        $result.= "<li>".$row[1]; //$row[1]  a name
+        if(has_children($rows,$row[0])){ //$row[0]  az id
+          $result.= build_menu($rows,$row[0]);//$row[0]  az id
+         } 
+        $result.= "</li>";
+      }
+    }
+    $result.= "</ul>";
+    return $result;
+}
+$rows = array(); 
+while($row=mysqli_fetch_array($result)){
+    $rows[] = $row;
+}
+print build_menu($rows);
+?>
