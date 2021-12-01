@@ -1,13 +1,19 @@
 <?php
-include '.php';
+include 'databaseImport.php';
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-$GLOBALS['db'] = mysqli_connect("db","test_feladat","mPPUsybBQnRVRdJQ","test_feladat")
-        or die("Error " . mysqli_error($GLOBALS['db']));
-$query = "SELECT id,name,parent_id FROM tree_source";
-$result = $GLOBALS['db']->query($query);
+
+$dbName="test_feladat";
+$dbUser="test_feladat";
+$dbPass="mPPUsybBQnRVRdJQ";
+$dbservname = "db";
+
+
+$test = new DatabaseIn($dbservname,$dbUser,$dbPass,$dbName);     
+$data = $test->run();
+
 
 function has_children($rows,$id){
     foreach($rows as $row){
@@ -31,9 +37,6 @@ function build_menu($rows,$parent=0){
     $result.= "</ul>";
     return $result;
 }
-$rows = array(); 
-while($row=mysqli_fetch_array($result)){
-    $rows[] = $row;
-}
-print build_menu($rows);
+
+print build_menu($data);
 ?>
