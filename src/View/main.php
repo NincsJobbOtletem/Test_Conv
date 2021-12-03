@@ -17,5 +17,6 @@ $dbservname = "db";
 
 $test = new DatabaseIn($dbservname,$dbUser,$dbPass,$dbName);     
 $data = $test->databaseImport();
+
 echo build_Menu($data);
 ?>
