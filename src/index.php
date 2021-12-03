@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Conversific_Test</title>
-    <link rel="stylesheet"  type="text/css" href="View/style.css">
-</head>
-<body>
-    <h1>Conversific_Test</h1>
- 
-    <?php
-    include 'View/main.php';
-    ?>
-</body>
-</html>
+<?php
+include 'View/main.php';
+?>
