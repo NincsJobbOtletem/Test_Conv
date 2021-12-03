@@ -31,7 +31,7 @@ class DatabaseIn{ //DatabaseIn tulajdonságai
     }
     return $rows;
   }
-  public function run(){
+  public function databaseImport(){
     $result = $this->databaseCall();
     $result = $this->databaseDataToArray($result);
     return $result;
