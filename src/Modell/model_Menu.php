@@ -1,7 +1,7 @@
 <?php
-require 'config.php';
+require 'utils/config.php';
 
-class Database{ //DatabaseIn tulajdonságai
+class Database{ 
     private $dbservname;
     private $dbUser;
     private $dbPass;
@@ -9,7 +9,7 @@ class Database{ //DatabaseIn tulajdonságai
     private $charset;
    
     
-    protected function connect(){
+    public function connect(){
         $this->dbservername = $dbservname; 
         $this->dbUser = $dbUser;
         $this->dbPass = $dbPass;
@@ -20,15 +20,12 @@ class Database{ //DatabaseIn tulajdonságai
     try {
         $dsn = "mysql:host=".$this->dbservername.";dbname=".$this->dbName.";charset=".$this->charset;
         $pdo = new PDO($dsn, $this->dbUser, $this->dbPass);
-
         if ($pdo) {
-            echo "Connected to the $db database successfully!";
-            return $pdo;
+            echo "Connected to the database successfully!";
         }
-    } catch (PDOException $e) {
-        echo $e->getMessage();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
-    }
-
-
+}
 ?>
