@@ -15,9 +15,7 @@ class Database{ //DatabaseIn tulajdonságai
         $this->dbPass = $dbPass;
         $this->dbName = $dbName;
         $this->charset = $charset;
-        }
-
-    
+        
 
     try {
         $dsn = "mysql:host=".$this->dbservername.";dbname=".$this->dbName.";charset=".$this->charset;
@@ -29,6 +27,7 @@ class Database{ //DatabaseIn tulajdonságai
         }
     } catch (PDOException $e) {
         echo $e->getMessage();
+    }
     }
 
 
