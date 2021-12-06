@@ -2,26 +2,30 @@
 require 'config.php';
 
 class Database{ //DatabaseIn tulajdonságai
-    protected $dbservname;
-    protected $dbUser;
-    protected $dbPass;
-    protected $dbName;
-    protected $charset;
-  
-    function __construct($dbservname,$dbUser,$dbPass,$dbName){  //construktor declarácciója ez mindig autómatikusan megfog hívódni
-      $this->dbservername = $dbservname; 
-      $this->dbUser = $dbUser;
-      $this->dbPass = $dbPass;
-      $this->dbName = $dbName;
-    }
+    private $dbservname;
+    private $dbUser;
+    private $dbPass;
+    private $dbName;
+    private $charset;
+   
+    
+    protected function connect(){
+        $this->dbservername = $dbservname; 
+        $this->dbUser = $dbUser;
+        $this->dbPass = $dbPass;
+        $this->dbName = $dbName;
+        $this->charset = $charset;
+        }
 
-    $dsn = "mysql:host=$this->dbservername;dbname=$db;charset=UTF8";
+    
 
     try {
-        $pdo = new PDO($dsn, $user, $password);
+        $dsn = "mysql:host=".$this->dbservername.";dbname=".$this->dbName.";charset=".$this->charset;
+        $pdo = new PDO($dsn, $this->dbUser, $this->dbPass);
 
         if ($pdo) {
             echo "Connected to the $db database successfully!";
+            return $pdo;
         }
     } catch (PDOException $e) {
         echo $e->getMessage();
