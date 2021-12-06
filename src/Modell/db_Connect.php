@@ -2,7 +2,8 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-//Legyen globál
+//Legyen globál és pdo több slelect legyen és egy osztály legyen egy globál contstuktorral
+// GET ALL metódus
 class DatabaseIn{ //DatabaseIn tulajdonságai
   protected $dbservname;
   protected $dbUser;
