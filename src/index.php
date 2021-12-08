@@ -8,7 +8,8 @@ $details = include('Config/config.php');
 
 $test = new Database($details);     
 $data = $test->getAll();
-$test1 = new Controller($data);
-$menu = $test1->run();
+
+$testc = new Builder($data);
+$menu = $testc->run();
 print $menu;
 ?>

@@ -1,5 +1,5 @@
 <?php
-class Controller{
+class Builder{
     protected $data;   
       
     function __construct($data){  
