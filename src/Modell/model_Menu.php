@@ -15,10 +15,9 @@ class Database{
         $pdo = new PDO($dsn, $this->details["dbUser"], $this->details["dbPassword"]);
     
         if ($pdo) {
-            echo "Connected to the ".$this->details["dbHost"]." named database successfully!";
-            $cmd = $pdo->prepare("SELECT * FROM tree_source");
+            $stmt = $pdo->prepare("SELECT * FROM tree_source");
             
-            return $cmd;
+            return $stmt;
             
             
         }
@@ -27,9 +26,9 @@ class Database{
     }
   }
   function getAll(){
-    $cmd = $this->configImport();
-    $cmd->execute();
-    $result = $cmd->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $this->configImport();
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 
     }
