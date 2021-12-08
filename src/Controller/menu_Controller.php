@@ -1,9 +1,9 @@
 <?php
 class Controller{
-    protected $result;   
+    protected $data;   
       
-    function __construct($result){  
-        $this->result = $result;
+    function __construct($data){  
+        $this->result = $data;
     }
 
     function has_children($rows,$id){
@@ -13,14 +13,14 @@ class Controller{
         }
         return false;
     }
-    protected function Action($result,$parent=0){  
+    protected function Action($data,$parent=0){  
         $menu = "<ul>";
     
-        foreach($result as $row){
+        foreach($data as $row){
           if ($row["parent_id"] == $parent){ 
             $menu.= "<li>".$row["name"]; 
-            if (has_children($result,$row["id"])){ 
-              $menu.= Action($result,$row["id"]);
+            if ($this->has_children($data,$row["id"])){ 
+              $menu.= $this->Action($data,$row["id"]);
             } 
             $menu.= "</li>";
           }
@@ -31,12 +31,8 @@ class Controller{
     }
     protected function show(){
      
-    }
-    
-
-   
-    public function run(){
-        
+    }   
+    public function run(){    
        $menu = $this->Action($this->result);
        return $menu;
     }

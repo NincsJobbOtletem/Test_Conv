@@ -8,10 +8,7 @@ $details = include('Config/config.php');
 
 $test = new Database($details);     
 $data = $test->getAll();
-echo "<pre>";
-var_dump($data);
-echo "</pre>";
-
 $test1 = new Controller($data);
 $menu = $test1->run();
+print $menu;
 ?>
