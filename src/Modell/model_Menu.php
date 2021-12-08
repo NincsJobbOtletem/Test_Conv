@@ -1,31 +1,42 @@
 <?php
-require 'utils/config.php';
 
-class Database{ 
-    private $dbservname;
-    private $dbUser;
-    private $dbPass;
-    private $dbName;
-    private $charset;
-   
+
+class Database{
+  protected $details;
+
+  function __construct($details){
+    $this->details = $details;
+    //késöbb jöhet ide adatbázis neve
     
-    public function connect(){
-        $this->dbservername = $dbservname; 
-        $this->dbUser = $dbUser;
-        $this->dbPass = $dbPass;
-        $this->dbName = $dbName;
-        $this->charset = $charset;
-        
-
+  }
+  function configImport(){
+    $dsn = "mysql:host=".$this->details["dbHost"].";dbname=".$this->details['dbName'].";charset=UTF8";
     try {
-        $dsn = "mysql:host=".$this->dbservername.";dbname=".$this->dbName.";charset=".$this->charset;
-        $pdo = new PDO($dsn, $this->dbUser, $this->dbPass);
+        $pdo = new PDO($dsn, $this->details["dbUser"], $this->details["dbPassword"]);
+    
         if ($pdo) {
-            echo "Connected to the database successfully!";
+            echo "Connected to the ".$this->details["dbHost"]." named database successfully!";
+            $cmd = $pdo->prepare("SELECT * FROM tree_source");
+            
+            return $cmd;
+            
+            
         }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+    } catch (PDOException $e) {
+        echo $e->getMessage();
     }
+  }
+  function getAll(){
+    $cmd = $this->configImport();
+    $cmd->execute();
+    $result = $cmd->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+
+    }
+  
+
+
 }
+   
+
 ?>
