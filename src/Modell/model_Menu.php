@@ -1,41 +1,13 @@
 <?php
-
-
-class Database{
-  protected $details;
-
-  function __construct($details){
-    $this->details = $details;
-    //késöbb jöhet ide adatbázis neve
+    require_once 'Config/Database.php';
+    $details = include('Config/config.php');
     
-  }
-  function configImport(){
-    $dsn = "mysql:host=".$this->details["dbHost"].";dbname=".$this->details['dbName'].";charset=UTF8";
-    try {
-        $pdo = new PDO($dsn, $this->details["dbUser"], $this->details["dbPassword"]);
-    
-        if ($pdo) {
-            $stmt = $pdo->prepare("SELECT * FROM tree_source");
-            
-            return $stmt;
-            
-            
-        }
-    } catch (PDOException $e) {
-        echo $e->getMessage();
+    $db = Database::getInstance();
+    $statement = 'SELECT * FROM tree_source';
+
+    if ($result = $db->query($statement)) {
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+          echo $row;
     }
-  }
-  function getAll(){
-    $stmt = $this->configImport();
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $result;
-
-    }
-  
-
-
 }
-   
-
 ?>
