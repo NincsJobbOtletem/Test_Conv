@@ -9,5 +9,19 @@
     <link rel="stylesheet"  type="text/css" href="style.css">
     </head>
     <body>
-    <h1>Conversific_Test</h1>  
+    <h1>Conversific_Test</h1>
+    <div>
+            
+		<form method="POST">
+                <label>
+                <b>Table name:
+                </label>
+                </b> 
+				<input type="text" name="username" placeholder="Enter Table"/>	 
+                
+                <br></br> 
+			    <input type="submit" type="submit" value="add" id="submit"/>   
+
+		</form>
+        
 </body>
