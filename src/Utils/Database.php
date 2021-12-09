@@ -1,39 +1,39 @@
 <?php
-class Database 
+class Database
 {
-    protected $details;
+
     private $_db;
     static $_instance;
 
-    private function __construct() {
-        var_dump($this->details);
-        
-        $dsn = "mysql:host=".$this->details["dbHost"].";dbname=".$this->details['dbName'].";charset=UTF8";
-    try {
-        $this->_db = new PDO($dsn, $this->details["dbUser"], $this->details["dbPassword"]);
-        if ($this->_db) {
-            var_dump($this->_db);
-            $this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
-        }
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
-  }   
-    private function __clone(){}
+    private function __construct(array $config)
+    {
+        var_dump($config);
 
-    public static function getInstance() {
-        if (!(self::$_instance instanceof self)) {
-            self::$_instance = new self();
+        $dsn = "mysql:host=" . $config["dbHost"] . ";dbname=" . $config['dbName'] . ";charset=UTF8";
+        try {
+            $this->_db = new PDO($dsn, $config["dbUser"], $config["dbPassword"]);
+            if ($this->_db) {
+                var_dump($this->_db);
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    
+    public static function getInstance(array $config)
+    {
+        if (!(self::$_instance instanceof DataBase)) {
+            self::$_instance = new Database($config);
         }
         return self::$_instance;
     }
 
-    public function query($sql) {
-      return $this->_db->query($sql);
-  }
-
+    public function query($sql)
+    {
+        return $this->_db->query($sql);
+    }
+    public function getALL($sql)
+    {
+        return $this->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
-   
-
-?>
