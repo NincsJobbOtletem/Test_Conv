@@ -1,13 +1,29 @@
 <?php
-    require_once 'Utils/Database.php';
-    $details = include('Config/config.php');
-    
-    $db = Database::getInstance();
-    $statement = 'SELECT * FROM tree_source';
+    require_once __DIR__ .'/../Utils/Database.php';  
+    //adatbetöltés
+    class ConfToData{
+        protected $config;
+        protected $tableName;
+        function __construct(){  
+            $this->config = include(__DIR__ .'/../Config/config.php'); 
+            $this->tableName = "tree_source";
+        }
+        function makeDB($config){
+            return $db = Database::getInstance($config);
+        }
 
-    if ($result = $db->query($statement)) {
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-          echo $row;
+        function select(){
+            return $statement = "SELECT * FROM {$this->tableName}";
+        }
+        function run(){
+            $conf = $this->makeDB($this->config);
+            $statement = $this->select();
+            return $conf->getAll($statement);
+            
+        }
+
+        
     }
-}
+
 ?>
+    

@@ -1,0 +1,53 @@
+SINGLETON PATTERN
+EGYKE PATTERN
+
+A DATABASE SINGLETON LEGYEN EGYETLEN PÉLDÁNYAL
+UTIL MAPPÁBAN INDEX.PHP NEM KELL LÉTREHOZNI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+require_once __DIR__ .'/../Utils/Database.php';
+    $statement = 'SELECT * FROM tree_source';
+    $res = $db->getAll($statement);
+    echo "<pre>";
+    var_dump($res);
+    echo "</pre>";

@@ -14,6 +14,7 @@ class Builder{
         return false;
     }
     protected function Action($data,$parent=0){  
+      //itt csak felépiti az arrayt
         $menu = "<ul>";
     
         foreach($data as $row){
