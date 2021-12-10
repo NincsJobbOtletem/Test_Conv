@@ -7,13 +7,10 @@ class Database
 
     private function __construct(array $config)
     {
-        var_dump($config);
-
         $dsn = "mysql:host=" . $config["dbHost"] . ";dbname=" . $config['dbName'] . ";charset=UTF8";
         try {
             $this->_db = new PDO($dsn, $config["dbUser"], $config["dbPassword"]);
             if ($this->_db) {
-                var_dump($this->_db);
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
