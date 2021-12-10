@@ -13,10 +13,8 @@ class Builder{
         }
         return false;
     }
-    protected function Action($data,$parent=0){  
-      //itt csak felépiti az arrayt
+    protected function Action($data,$parent=0){
         $menu = "<ul>";
-    
         foreach($data as $row){
           if ($row["parent_id"] == $parent){ 
             $menu.= "<li>".$row["name"]; 
@@ -30,9 +28,6 @@ class Builder{
         $menu.= "</ul>";
         return $menu;
     }
-    protected function show(){
-     
-    }   
     public function run(){    
        $menu = $this->Action($this->result);
        return $menu;
