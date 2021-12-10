@@ -1,27 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Conversific_Test</title>
-    <link rel="stylesheet"  type="text/css" href="style.css">
-    </head>
-    <body>
-    <h1>Conversific_Test</h1>
-    <div>
-            
-		<form method="POST">
-                <label>
-                <b>Table name:
-                </label>
-                </b> 
-				<input type="text" name="username" placeholder="Enter Table"/>	 
-                
-                <br></br> 
-			    <input type="submit" type="submit" value="add" id="submit"/>   
-
-		</form>
+<?php
+    class View{
+        protected $body;
+        protected $head;
+        protected $footer;
         
-</body>
+        function __construct()
+        {
+            $this->body = file_get_contents(__DIR__ .'/../View/body.html');
+            $this->head = file_get_contents(__DIR__ .'/../View/head.html');
+            $this->footer = file_get_contents(__DIR__ .'/../View/footer.html');
+        }
+
+        function body(){
+            return $this->body;
+        }
+        function footer(){
+            return $this->footer;
+        }
+        function head(){
+            return $this->head;
+        }
+        public function run(){
+            $body = $this->body($this->body);
+            $head= $this->head($this->head);
+            $footer = $this->footer($this->footer);
+            return $body.''.$footer.''.$head;
+    }
+
+}

@@ -43,11 +43,34 @@ UTIL MAPPÁBAN INDEX.PHP NEM KELL LÉTREHOZNI
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Conversific_Test</title>
+    <link rel="stylesheet"  type="text/css" href="style.css">
+    </head>
+    <body>
+    <h1>Conversific_Test</h1>
+    <div>
+            
+		<form method="POST">
+                <label>
+                <b>Table name:
+                </label>
+                </b> 
+				<input type="text" name="username" placeholder="Enter Table"/>	 
+                
+                <br></br> 
+			    <input type="submit" type="submit" value="add" id="submit"/>   
 
-
-require_once __DIR__ .'/../Utils/Database.php';
-    $statement = 'SELECT * FROM tree_source';
-    $res = $db->getAll($statement);
-    echo "<pre>";
-    var_dump($res);
-    echo "</pre>";
+		</form>
+        
+</body>
+<footer>
+  <p>Author: Hege Refsnes<br>
+  <a href="mailto:hege@example.com">hege@example.com</a></p>
+</footer>
