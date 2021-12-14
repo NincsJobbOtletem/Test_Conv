@@ -1,11 +1,15 @@
 <?php
-class View
+
+namespace MyApp\View\MenuView;
+
+class MenuView
 {
     
     private $data;
 
     function __construct($data)
     {
+        
         $this->body = file_get_contents(__DIR__ . '/../View/body.html');
         $this->head = file_get_contents(__DIR__ . '/../View/head.html');
         $this->footer = file_get_contents(__DIR__ . '/../View/footer.html');

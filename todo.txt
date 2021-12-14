@@ -1,21 +1,19 @@
-SINGLETON PATTERN
-EGYKE PATTERN
+A database-t átalakitani factory patterné.
 
-A DATABASE SINGLETON LEGYEN EGYETLEN PÉLDÁNYAL
-UTIL MAPPÁBAN INDEX.PHP NEM KELL LÉTREHOZNI
+config átirás.
 
+Szerződésell garantálni hogy több sql-l is optimalizált.
+mysql,pdo ,sqLite
 
+php interface <- Hasonló egy osztályhoz . Strukturát ad.
 
+--------
 
+iDatabase létrehozása,factory-k hogy működnek...
+configbolt paraméterezni hogy melyik adatbázist szeretném betölteni.
 
-
-
-
-
-
-
-
-
+-------------
+View-twig
 
 
 
@@ -32,45 +30,3 @@ UTIL MAPPÁBAN INDEX.PHP NEM KELL LÉTREHOZNI
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Conversific_Test</title>
-    <link rel="stylesheet"  type="text/css" href="style.css">
-    </head>
-    <body>
-    <h1>Conversific_Test</h1>
-    <div>
-            
-		<form method="POST">
-                <label>
-                <b>Table name:
-                </label>
-                </b> 
-				<input type="text" name="username" placeholder="Enter Table"/>	 
-                
-                <br></br> 
-			    <input type="submit" type="submit" value="add" id="submit"/>   
-
-		</form>
-        
-</body>
-<footer>
-  <p>Author: Hege Refsnes<br>
-  <a href="mailto:hege@example.com">hege@example.com</a></p>
-</footer>

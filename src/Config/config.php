@@ -6,6 +6,7 @@ return [
         'dbUser' => 'test_feladat',
         'dbPassword' => 'mPPUsybBQnRVRdJQ',
         'dbHost' => 'db'
+        
 
 ];
 

@@ -1,18 +1,21 @@
 <?php
+
+namespace MyApp\Utils\Database;
+use \PDO;
 class Database
 {
-
+    
     private $_db;
     static $_instance;
 
-    private function __construct(array $config)
+    private function __construct(array $config) 
     {
         $dsn = "mysql:host=" . $config["dbHost"] . ";dbname=" . $config['dbName'] . ";charset=UTF8";
         try {
             $this->_db = new PDO($dsn, $config["dbUser"], $config["dbPassword"]);
             if ($this->_db) {
             }
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo $e->getMessage();
         }
     }
