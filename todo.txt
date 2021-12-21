@@ -1,6 +1,6 @@
-A database-t átalakitani factory patterné.
+A database-t átalakitani factory patterné. 
 
-config átirás.
+config átirás. pipa
 
 Szerződésell garantálni hogy több sql-l is optimalizált.
 mysql,pdo ,sqLite
@@ -20,13 +20,28 @@ View-twig
 
 
 
+2021-12-16
+- dockerben installálni a git-et
+- legyen abstract Controller-ed pl AbstractController ez csinálja meg a twig renderelést. A metódus paraméteerként kapja meg a twig utvonalat és a megjelenítséhez szükésges params attribútumot.
+render(path: string, params: array){
+
+}
+------------------------------------------------------------------
+
+- factory osztályt megcsinálni
+DatabaseFactory
+- ő fog tudni a configról
 
 
+static function getObject(){
+    return new Database(paraméterek itt átadva)
+}
 
+--------------------------------------------------------------
 
-
-
-
-
+Model
+__constructor(Database $db){
+    this->db = db;
+}
 
 

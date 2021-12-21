@@ -4,16 +4,17 @@ namespace MyApp\View\MenuView;
 
 class MenuView
 {
-    
+
     private $data;
 
     function __construct($data)
     {
-        
-        $this->body = file_get_contents(__DIR__ . '/../View/body.html');
+
+        $this->body = file_get_contents(__DIR__ . '/../View/body.html.twig');
         $this->head = file_get_contents(__DIR__ . '/../View/head.html');
         $this->footer = file_get_contents(__DIR__ . '/../View/footer.html');
         $this->data = $data;
+        $array = (array) $this->data;
     }
 
     function body()
@@ -40,6 +41,7 @@ class MenuView
     {
         $menu = "<ul>";
         foreach ($data as $row) {
+            echo $data;
             if ($row["parent_id"] == $parent) {
                 $menu .= "<li>" . $row["name"];
                 if ($this->has_children($data, $row["id"])) {
@@ -54,7 +56,7 @@ class MenuView
     }
     public function show()
     {
-        return $this->head().''.$this->body().''.$this->BuildMenu($this->data).''.$this->footer();
-        
+
+        return $this->head() . '' . $this->body() . '' . $this->BuildMenu($this->data) . '' . $this->footer();
     }
 }

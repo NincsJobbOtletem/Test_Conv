@@ -1,21 +1,21 @@
 <?php
 
+include_once __DIR__ . '/vendor/autoload.php';
 
-use MyApp\View\MenuView\MenuView;
-use MyApp\Modell\Almafa\DBDI;
+use MyApp\Controller\Controller;
+use MyApp\Router;
+use MyApp\Utils\Database\Database;
+use MyApp\Modell\model\ConfToData;
 
-require_once __DIR__ . '/vendor/autoload.php';
 
+Router::get('/hello', function () {
+    return new Controller();
+});
 
-$data = new DBDI();
-echo "<pre>";
-var_dump($data);
-echo "</pre>";
-$views = new MenuView($data);
-print $views->show();
+$config = include(__DIR__ . '/src/Config/config.php');
 
-// $testa = new ConfToData();
-// $data = $testa->run();
-
-// $viewAndBuild = new View($data);
-// print $viewAndBuild->show();
+$test = Database::getInstance($config);
+$sql = "SELECT * FROM tree_source";
+$query=$test->prepare($sql);
+$query->execute();
+var_dump($query->fetchAll());

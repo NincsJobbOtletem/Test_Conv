@@ -1,12 +1,21 @@
 <?php
 
-namespace MyApp\Controller\MenuController;
+namespace MyApp\Controller;
 
-class MenuController{
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+use MyApp\Utils\Database\Database;
 
-    public function __construct()
+
+class Controller
+{
+    function __construct()
     {
-        echo "made Controller";
+        $loader = new FilesystemLoader('src/View');
+        $twig = new Environment($loader);
+        echo $twig->render('main.html.twig', array(
+            'name' => 'Patrik',
+            'age' => 23
+        ));
     }
-
 }
