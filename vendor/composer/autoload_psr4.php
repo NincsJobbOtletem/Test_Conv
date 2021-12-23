@@ -14,5 +14,6 @@ return array(
     'Opis\\Closure\\' => array($vendorDir . '/opis/closure/src'),
     'MyApp\\' => array($baseDir . '/src'),
     'Invoker\\' => array($vendorDir . '/php-di/invoker/src'),
+    'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'DI\\' => array($vendorDir . '/php-di/php-di/src'),
 );

@@ -39,7 +39,7 @@ class Database
         }
         return self::$_instance;
     }
-
+    //pdo és mysqli külön hivása egy osztály és külön file
     private function PDObe()
     {
         $dsn = "mysql:host=" . $this->dbservname . ";dbname=" . $this->dbName . ";charset=UTF8";
@@ -58,8 +58,6 @@ class Database
     {
         $db = mysqli_connect($this->dbservername, $this->dbUser, $this->dbPass, $this->dbName)
             or die("Error " . mysqli_error($db));
-        $query = "SELECT * FROM tree_source";
-        $result = $db->query($query);
-        return $result;
+        return $db;
     }
 }

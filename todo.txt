@@ -43,5 +43,7 @@ Model
 __constructor(Database $db){
     this->db = db;
 }
+modelbe sima db bekérdezés dpendenci injection
+az adatbázist jól átadni!. dependenci adatbázis ijektálása
 
 

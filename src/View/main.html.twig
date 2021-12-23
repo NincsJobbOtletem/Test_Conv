@@ -10,20 +10,12 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Conversific_Test</h1>
-    <div style="color:blue;">
-    {{ name }} - {{ age }}
-        <form method="POST">
-            <label>
-                <b>Table name:
-            </label>
-            </b>
-            <input type="text" name="username" placeholder="Enter Table" />
-
-            <br></br>
-            <input type="submit" type="submit" value="add" id="submit" />
-
-        </form>
+    <h1> category</h1>
+<ul>
+    {% for key in category|keys %}
+        <li>{{key}}</li>
+    {% endfor %}
+</ul>
         </div>
 </body>
 <footer>
