@@ -13,11 +13,14 @@ class selects
     }
     public function selectAll($db)
     {
+        $phpvar = array();
+       
         $sql = "SELECT * FROM tree_source";
         $query = $db->prepare($sql);
         $query->execute();
-        $data = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $data;
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        
     }
 }
 

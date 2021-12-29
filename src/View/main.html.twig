@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Conversific_Test</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <h1> category</h1>
-<ul>
-    {% for key in category|keys %}
-        <li>{{key}}</li>
-    {% endfor %}
-</ul>
-        </div>
-</body>
-<footer>
-    <p>© 2018 Gandalf</p>
-</footer>
+		<title>Conversific_Test</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<h1>
+			category</h1>
+		<ul>
+			<ul>
+				{% for key in category %}
+
+					{% if key.parent_id == 0 %}
+						<li>{{ key.name }}</li>
+					{% endif %}
+					{% for jey in category %}
+						<ul>
+						{% if jey.parent_id == key.id %}
+						<li>{{jey.name}}</li>
+						{% endif %}
+						</ul>
+					{% endfor %}
+
+					{% endfor %}
+
+			</ul>
+		</body>
+	</body>
+</html></body></html></ul></body></html></div></body><footer><p>© 2018 Gandalf</p></footer></html>

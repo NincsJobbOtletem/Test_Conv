@@ -11,19 +11,22 @@ use MyApp\Modell\model\selects;
 class Controller
 {
     private $data;
-    
+
     function __construct()
     {
         $config = include(__DIR__ . '/../Config/config.php');
 
         $this->loader = new FilesystemLoader('src/View');
         $this->twig = new Environment($this->loader);
-        
+
         $test = Database::getInstance($config);
         $data = new selects();
+        
         $this->category = $data->selectAll($test);
-
-
+        echo "<pre>";
+        var_dump($this->category);
+        echo "</pre>";
+        $this->alma = array();
         
     }
 
@@ -39,10 +42,10 @@ class Controller
     {
         $menu = "<ul>";
         foreach ($data as $row) {
-            
+
             if ($row["parent_id"] == $parent) {
                 $menu .= "<li>" . $row["name"];
-               
+
                 $menu .= "</li>";
             }
         }
@@ -50,9 +53,9 @@ class Controller
         $menu .= "</ul>";
         return $menu;
     }
-    function twig_render(){
+    function twig_render()
+    {
         echo $this->twig->render('main.html.twig', array('category' => $this->category));
-
     }
 }
 
