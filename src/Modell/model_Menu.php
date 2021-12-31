@@ -3,16 +3,15 @@
 
 namespace MyApp\Modell\model;
 
-class MenuBuild
+class Configer
 {
-    function __construct()
+    private $config;
+    public function __construct($config)
     {
-        
+        $this->config = $config;
+    }
+    public function fullconfig()
+    {
         return $this->config;
     }
-    
 }
-
-// egy array tömb ami megjeleniti a strukturát 
-
-//üzleti logika 

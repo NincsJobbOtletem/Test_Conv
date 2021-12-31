@@ -11,24 +11,27 @@
 	</head>
 	<body>
 		<h1>
-			category</h1>
-			<ul>
-				{% for key in category %}
+			Category</h1>
+		<ul>
+			{% for key in category %}
 
-					{% if key.parent_id == 0 %}
-						<li>{{ key.name }}</li>
-					{% endif %}
-					{% for jey in category %}
-						<ul>
+				{% if key.parent_id == 0 %}
+					<li>{{ key.name }}</li>
+				{% endif %}
+				{% for jey in category %}
+					<ul>
 						{% if jey.parent_id == key.id %}
-						<li>{{jey.name}}</li>
+							
+							<li>{{jey.name}}</li>
 						{% endif %}
-						</ul>
-					{% endfor %}
+					</ul>
+				{% endfor %}
 
-					{% endfor %}
+			{% endfor %}
 
-			</ul>
-		</body>
+		</ul>
 	</body>
-</html></body></html></ul></body></html></div></body><footer><p>© 2018 Gandalf</p></footer></html>
+	<footer>
+		<p>© 2018 Gandalf</p>
+	</footer>
+</html>
