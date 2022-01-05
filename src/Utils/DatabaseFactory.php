@@ -7,11 +7,7 @@ use \PDO;
 class Database
 {
     protected $config;
-    public $dbservname;
-    public $dbUser;
-    public $dbPass;
-    public $dbName;
-    public $dbTable;
+    
     static $_instance;
 
     private function __construct($config)
