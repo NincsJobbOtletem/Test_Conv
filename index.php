@@ -8,8 +8,7 @@ use MyApp\Router;
 Router::get('/main', function () {
     return new Controller();
 });
+
  $menu = new Controller();
- $menu1= $menu->twig_render();
-
-
+ $menuRender = $menu->twig_render();
 

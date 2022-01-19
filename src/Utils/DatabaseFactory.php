@@ -7,35 +7,31 @@ use \PDO;
 class Database
 {
     protected $config;
-    
+
     static $_instance;
 
     private function __construct($config)
     {
 
-        $this->dbservname = $config["dbHost"];
-        $this->dbUser = $config["dbUser"];
-        $this->dbPass = $config["dbPassword"];
-        $this->dbName = $config['dbName'];
-        $this->dbTable = $config['dbTable'];
+        $this->dbName = $config[0]; //dbName
+        $this->dbUser = $config[1]; //dbUser
+        $this->dbPass = $config[2]; //dbPassword
+        $this->dbservname = $config[3];  //dbHost
+        $this->dbTable = $config[4]; //dbTable
     }
     public static function getInstance(array $config)
     {
         if (!(self::$_instance instanceof DataBase)) {
             $database = new Database($config);
-            switch ($config['dbType']) {
+            switch ($config[5]) {
                 case "pdo":
                     self::$_instance = $database->PDObe();
                     break;
-                case "mysqli":
-                    self::$_instance = $database->mysqlibe();
-                    break;
             }
-            
         }
         return self::$_instance;
     }
-    //pdo és mysqli külön hivása egy osztály és külön file
+
     private function PDObe()
     {
         $dsn = "mysql:host=" . $this->dbservname . ";dbname=" . $this->dbName . ";charset=UTF8";
@@ -47,13 +43,6 @@ class Database
         } catch (\PDOException $e) {
             echo $e->getMessage();
         }
-        return $db;
-    }
-
-    private function mysqlibe()
-    {
-        $db = mysqli_connect($this->dbservername, $this->dbUser, $this->dbPass, $this->dbName)
-            or die("Error " . mysqli_error($db));
         return $db;
     }
 }

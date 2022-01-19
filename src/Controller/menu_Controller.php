@@ -12,20 +12,28 @@ use MyApp\Modell\model\Configer;
 class Controller
 {
 
-
     function __construct()
     {
-        $cnf = include(__DIR__ . '/../Config/config.php');;
-        $c = new Configer($cnf);
-        $config = $c->fullconfig();
+        $builder = new \DI\ContainerBuilder();
+        $builder->addDefinitions(__DIR__ . '/../Config/config.php');
+        $container = $builder->build();
+        $d = new Configer($container);
+        $config = $d->getConfig($container);
+
+        //  $cnf = include(__DIR__ . '/../Config/config.php');
+        //  $c = new Configer($cnf);
+        // $config = $c->fullconfig();
+        // echo "<pre>";
+        // var_dump($config) ;
+        // echo "<pre>";
 
         $this->loader = new FilesystemLoader('src/View');
         $this->twig = new Environment($this->loader);
 
-        $test = Database::getInstance($config);
+        $select = Database::getInstance($config);
         $data = new selects();
 
-        $this->category = $data->selectAll($test);
+        $this->category = $data->selectAll($select);
     }
 
     function twig_render()
@@ -33,5 +41,6 @@ class Controller
         echo $this->twig->render('main.html.twig', array('category' => $this->category));
     }
 }
+
 
 //show twig render
