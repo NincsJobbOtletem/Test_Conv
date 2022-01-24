@@ -96,6 +96,7 @@ return array(
     'Invoker\\ParameterResolver\\ResolverChain' => $vendorDir . '/php-di/invoker/src/ParameterResolver/ResolverChain.php',
     'Invoker\\ParameterResolver\\TypeHintResolver' => $vendorDir . '/php-di/invoker/src/ParameterResolver/TypeHintResolver.php',
     'Invoker\\Reflection\\CallableReflection' => $vendorDir . '/php-di/invoker/src/Reflection/CallableReflection.php',
+    'MyApp\\Config\\Bootstrap' => $baseDir . '/src/Config/bootstrap.php',
     'MyApp\\Controller\\Controller' => $baseDir . '/src/Controller/menu_Controller.php',
     'MyApp\\Modell\\model\\Configer' => $baseDir . '/src/Modell/model_Menu.php',
     'MyApp\\Modell\\model\\selects' => $baseDir . '/src/Modell/selects.php',

@@ -10,6 +10,3 @@ Router::get('/main', function () {
 });
  $menu = new Controller();
  $menu1= $menu->twig_render();
-
-
-
