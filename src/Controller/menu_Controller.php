@@ -7,7 +7,6 @@ use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 use MyApp\Utils\Database\Database;
 use MyApp\Modell\model\selects;
-use MyApp\Modell\model\Configer;
 use MyApp\Config\Bootstrap;
 
 class Controller
@@ -29,7 +28,7 @@ class Controller
         // echo "<pre>";
 
         $con1 = new Bootstrap;
-        $config = $con1->GetConfig();
+        $config = $con1->GiveConfig();
         
 
         $this->loader = new FilesystemLoader('src/View');
