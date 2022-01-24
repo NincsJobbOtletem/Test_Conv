@@ -8,17 +8,18 @@ use Twig\Environment;
 use MyApp\Utils\Database\Database;
 use MyApp\Modell\model\selects;
 use MyApp\Modell\model\Configer;
+use MyApp\Config\Bootstrap;
 
 class Controller
 {
 
     function __construct()
     {
-        $builder = new \DI\ContainerBuilder();
-        $builder->addDefinitions(__DIR__ . '/../Config/config.php');
-        $container = $builder->build();
-        $d = new Configer($container);
-        $config = $d->getConfig($container);
+        // $builder = new \DI\ContainerBuilder();
+        // $builder->addDefinitions(__DIR__ . '/../Config/config.php');
+        // $container = $builder->build();
+        // $d = new Configer($container);
+        // $config = $d->getConfig($container);
 
         //  $cnf = include(__DIR__ . '/../Config/config.php');
         //  $c = new Configer($cnf);
@@ -26,6 +27,10 @@ class Controller
         // echo "<pre>";
         // var_dump($config) ;
         // echo "<pre>";
+
+        $con1 = new Bootstrap;
+        $config = $con1->GetConfig();
+        
 
         $this->loader = new FilesystemLoader('src/View');
         $this->twig = new Environment($this->loader);

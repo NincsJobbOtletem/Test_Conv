@@ -185,6 +185,7 @@ class ComposerStaticInitfed10f57a475e42aee7f3442485b3c5f
         'Invoker\\ParameterResolver\\ResolverChain' => __DIR__ . '/..' . '/php-di/invoker/src/ParameterResolver/ResolverChain.php',
         'Invoker\\ParameterResolver\\TypeHintResolver' => __DIR__ . '/..' . '/php-di/invoker/src/ParameterResolver/TypeHintResolver.php',
         'Invoker\\Reflection\\CallableReflection' => __DIR__ . '/..' . '/php-di/invoker/src/Reflection/CallableReflection.php',
+        'MyApp\\Config\\Bootstrap' => __DIR__ . '/../..' . '/src/Config/bootstrap.php',
         'MyApp\\Controller\\Controller' => __DIR__ . '/../..' . '/src/Controller/menu_Controller.php',
         'MyApp\\Modell\\model\\Configer' => __DIR__ . '/../..' . '/src/Modell/model_Menu.php',
         'MyApp\\Modell\\model\\selects' => __DIR__ . '/../..' . '/src/Modell/selects.php',
