@@ -15,7 +15,7 @@ class Bootstrap
         {
                 
         }
-        public function GiveConfig(){
+        public function giveConfig(){
                 $builder = new \DI\ContainerBuilder();
                 $builder->addDefinitions(__DIR__ . '/config.php');
                 $container = $builder->build();

@@ -18,11 +18,12 @@
 				{% if key.parent_id == 0 %}
 					<li>{{ key.name }}</li>
 				{% endif %}
+
 				{% for jey in category %}
 					<ul>
 						{% if jey.parent_id == key.id %}
-							
 							<li>{{jey.name}}</li>
+						
 						{% endif %}
 					</ul>
 				{% endfor %}
@@ -35,3 +36,25 @@
 		<p>© 2018 Gandalf</p>
 	</footer>
 </html>
+
+
+{# <ul>
+			{% for key in category %}
+
+				{% if key.parent_id == 0 %}
+					<li>{{ key.id}}</li>
+				{% endif %}
+				{% for jey in category %}
+					<ul>
+						{% if key.parent_id == jey.id %}
+
+							<li>{{jey.id}}</li>
+
+						
+						{% endif %}
+					</ul>
+				{% endfor %}
+
+			{% endfor %}
+
+		</ul> #}

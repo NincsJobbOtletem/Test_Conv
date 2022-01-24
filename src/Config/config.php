@@ -7,8 +7,7 @@ return [
                 'dbPassword' => 'mPPUsybBQnRVRdJQ',
                 'dbHost' => 'db',
                 'dbTable' => 'tree_source',
-                'dbType' => 'pdo'
-              
+                'dbType' => 'pdo'            
 ];
 
 ?>

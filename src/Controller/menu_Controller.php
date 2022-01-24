@@ -28,7 +28,7 @@ class Controller
         // echo "<pre>";
 
         $con1 = new Bootstrap;
-        $config = $con1->GiveConfig();
+        $config = $con1->giveConfig();
         
 
         $this->loader = new FilesystemLoader('src/View');
