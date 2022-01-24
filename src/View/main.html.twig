@@ -16,13 +16,13 @@
 			{% for key in category %}
 
 				{% if key.parent_id == 0 %}
-					<li>{{ key.name }}</li>
+					<li>{{ key.id }}</li>
 				{% endif %}
 
 				{% for jey in category %}
 					<ul>
 						{% if jey.parent_id == key.id %}
-							<li>{{jey.name}}</li>
+							<li>{{key.id}}</li>
 						
 						{% endif %}
 					</ul>
@@ -31,6 +31,7 @@
 			{% endfor %}
 
 		</ul>
+		
 	</body>
 	<footer>
 		<p>© 2018 Gandalf</p>

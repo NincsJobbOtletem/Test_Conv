@@ -38,6 +38,9 @@ class Controller
         $data = new selects();
 
         $this->category = $data->selectAll($select);
+        echo "<pre>";
+        var_dump($this->category);
+        echo "</pre>";
     }
 
     function twig_render()

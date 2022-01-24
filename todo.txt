@@ -47,3 +47,41 @@ modelbe sima db bekérdezés dpendenci injection
 az adatbázist jól átadni!. dependenci adatbázis ijektálása
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+parent id ra hivatkozás
+megvizsgálni van e neki.
+3 foreach
+
+
+call al hivjam az indexbe
+Minden objectumokat callal hivjam/pédányositsam a classokat.
+
+--closure
+
+config.php példa itt legyen megcsinálva az adatbázis példány
+
+selectet is callal.
